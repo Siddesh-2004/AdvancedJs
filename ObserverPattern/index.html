@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            background-color: white;
+            width: 100px;
+            height: 100px;
+            border: solid black;
+            text-align: center;
+            line-height: 100px;
+            font-size: larger;
+            color:black
+        }
+        button{
+            padding:5px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <hr>
+    <button onclick="model.increment()">increment</button>
+    <script src="NumberModel.js"></script>
+    <script src="PropertyObserver.js"></script>
+    <script src="LogObserver.js"></script>
+    <script src="HistoryObserver.js"></script>
+    <script>
+        const model=new NumberModel();
+        model.addObservers(new PropertyObserver("box",model));
+        model.addObservers(new LogObserver());
+        model.addObservers(new HistoryObserver());
+    </script>
+</body>
+</html>
